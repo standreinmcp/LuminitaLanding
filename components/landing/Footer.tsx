@@ -17,7 +17,7 @@ export default function Footer() {
         </p>
         <div className="flex flex-row items-center gap-4 mt-6">
           <a
-            href="https://substack.com"
+            href="https://luminitacampian.substack.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2.5 no-underline text-paper/50 text-[0.75rem] tracking-[2px] uppercase transition-colors duration-200 hover:text-paper"
@@ -31,23 +31,6 @@ export default function Footer() {
               <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
             </svg>
             <span>Substack</span>
-          </a>
-          <span className="text-paper/40">|</span>
-          <a
-            href="https://behance.net"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2.5 no-underline text-paper/50 text-[0.75rem] tracking-[2px] uppercase transition-colors duration-200 hover:text-paper"
-          >
-            <svg
-              width="18"
-              height="18"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M22 7h-7V5h7v2zm1.726 10c-.442 1.297-2.029 3-5.101 3-3.074 0-5.564-1.729-5.564-5.675 0-3.91 2.325-5.92 5.466-5.92 3.082 0 4.964 1.782 5.375 4.426.078.506.109 1.188.095 2.14H15.97c.13 1.202.483 1.81 1.252 2.124.459.189.995.101 1.452-.211l3.052.116zM15.897 14h4.712c-.108-1.287-.82-1.972-2.338-1.972-1.547 0-2.28.76-2.374 1.972z" />
-            </svg>
-            <span>Behance</span>
           </a>
         </div>
       </div>

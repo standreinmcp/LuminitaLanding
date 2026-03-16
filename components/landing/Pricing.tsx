@@ -1,11 +1,15 @@
+import Link from "next/link";
+
 const plans = [
   {
+    id: "60min",
     duration: "60 Minutes",
     price: "\u20AC160",
     desc: "Focused advisory session",
     featured: false,
   },
   {
+    id: "90min",
     duration: "90 Minutes",
     price: "\u20AC220",
     desc: "Extended advisory session",
@@ -73,13 +77,13 @@ export default function Pricing() {
                 >
                   {p.desc}
                 </div>
-                <a
-                  href="#contact"
+                <Link
+                  href={`/checkout?session=${p.id}`}
                   className="inline-block font-body text-[0.75rem] tracking-[2px] uppercase bg-brick text-paper no-underline transition-colors duration-300 hover:bg-dark"
                   style={{ padding: "0.9rem 2rem" }}
                 >
                   Book Now
-                </a>
+                </Link>
               </div>
             ))}
           </div>

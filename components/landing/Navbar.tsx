@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({ hideCta = false }: { hideCta?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -26,13 +27,15 @@ export default function Navbar() {
       >
         Interior Design Advisory
       </span>
-      <a
-        href="#pricing"
-        className="font-body text-[0.8rem] tracking-[2px] uppercase text-paper bg-cobalt no-underline transition-colors duration-300 hover:bg-brick"
-        style={{ padding: "0.7rem 1.8rem" }}
-      >
-        Book a Session
-      </a>
+      {!hideCta && (
+        <Link
+          href="/checkout"
+          className="font-body text-[0.8rem] tracking-[2px] uppercase text-paper bg-cobalt no-underline transition-colors duration-300 hover:bg-brick"
+          style={{ padding: "0.7rem 1.8rem" }}
+        >
+          Book a Session
+        </Link>
+      )}
     </nav>
   );
 }

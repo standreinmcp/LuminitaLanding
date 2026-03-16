@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function FinalCTA() {
   return (
     <section id="contact" className="bg-ink text-center section-padding">
@@ -15,12 +17,9 @@ export default function FinalCTA() {
         Book your advisory session and get professional clarity before you
         commit.
       </p>
-      <a
-        href="mailto:luminita.campian.arh@gmail.com"
-        className="reveal btn-primary"
-      >
+      <Link href="/checkout" className="reveal btn-primary">
         Book Your Session Now
-      </a>
+      </Link>
     </section>
   );
 }

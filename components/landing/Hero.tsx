@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Hero() {
   return (
     <section className="relative min-h-screen bg-black overflow-hidden hero-grid">
@@ -25,13 +27,13 @@ export default function Hero() {
             Get clarity exactly when it matters most.
           </strong>
         </p>
-        <a
-          href="#pricing"
+        <Link
+          href="/checkout"
           className="hero-fade-4 inline-block w-fit font-body text-[0.8rem] tracking-[2px] uppercase bg-brick text-paper no-underline transition-colors duration-300 hover:bg-cobalt"
           style={{ padding: "1.1rem 2.8rem", marginTop: "2rem" }}
         >
           Book Your Session
-        </a>
+        </Link>
       </div>
 
       {/* Right side */}

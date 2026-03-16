@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/landing/Navbar";
@@ -12,6 +12,14 @@ const sessions = [
 ];
 
 export default function CheckoutPage() {
+  return (
+    <Suspense>
+      <CheckoutContent />
+    </Suspense>
+  );
+}
+
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const initialSession = searchParams.get("session") === "90min" ? "90min" : "60min";
   const [selected, setSelected] = useState(initialSession);

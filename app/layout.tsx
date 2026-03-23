@@ -18,7 +18,8 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_URL || "https://lumi.design";
+const siteUrl =
+  process.env.NEXT_PUBLIC_URL || "https://interioradvisory.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -47,24 +48,24 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: siteUrl,
     siteName: "Lumi Interior Design Advisory",
-    title: "Private Interior Design Advisory | Lumi",
+    title: "Private Interior Design Advisory — Luminita Campian",
     description:
-      "One focused session with an architect and interior designer — before you renovate, before you commit, before mistakes become permanent.",
+      "Book a private advisory session with Luminita Campian, architect and interior designer. One focused conversation before you renovate — so you make decisions with clarity, not doubt.",
     images: [
       {
-        url: "/01_07_2026_Pixellab7699.jpg.jpeg",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Lumi Interior Design Advisory — Bring Your Doubts, Leave With Clarity",
+        alt: "Luminita Campian — Private Interior Design Advisory",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Private Interior Design Advisory | Lumi",
+    title: "Private Interior Design Advisory — Luminita Campian",
     description:
-      "One focused session with an architect and interior designer — before you renovate, before you commit, before mistakes become permanent.",
-    images: ["/01_07_2026_Pixellab7699.jpg.jpeg"],
+      "Book a private advisory session with Luminita Campian, architect and interior designer. One focused conversation before you renovate — so you make decisions with clarity, not doubt.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,

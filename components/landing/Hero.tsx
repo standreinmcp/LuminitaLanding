@@ -36,34 +36,37 @@ export default function Hero() {
         </Link>
       </div>
 
-      {/* Right side */}
-      <div className="relative overflow-hidden hero-right-col">
+      {/* Right side — background image on the element itself, no absolute positioning */}
+      <div
+        className="hero-right-col"
+        style={{
+          backgroundImage: "url('/01_07_2026_Pixellab7699.jpg.jpeg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center 35%",
+        }}
+      >
         <div
-          className="absolute inset-0"
           style={{
-            backgroundImage: "url('/01_07_2026_Pixellab7699.jpg.jpeg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center 35%",
-          }}
-        />
-        <div
-          className="absolute inset-0"
-          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            minHeight: "100%",
             background:
               "linear-gradient(to top, rgba(28,17,9,0.5) 0%, transparent 50%)",
           }}
-        />
-        <div className="absolute z-[2] hero-right-content-pos">
-          <p className="hero-fade-5 font-display italic text-[1.8rem] font-light leading-[1.4] text-paper">
-            &ldquo;You don&apos;t need to have it all figured out. That&apos;s
-            what I&apos;m here for.&rdquo;
-          </p>
-          <p
-            className="hero-fade-6 font-body text-[0.75rem] tracking-[3px] uppercase text-paper/60"
-            style={{ marginTop: "1.5rem" }}
-          >
-            Architect Luminita Campian
-          </p>
+        >
+          <div className="hero-right-quote-pad">
+            <p className="hero-fade-5 hero-quote font-display italic font-light leading-[1.4] text-paper">
+              &ldquo;You don&apos;t need to have it all figured out. That&apos;s
+              what I&apos;m here for.&rdquo;
+            </p>
+            <p
+              className="hero-fade-6 font-body text-[0.75rem] tracking-[3px] uppercase text-paper/60"
+              style={{ marginTop: "1.5rem" }}
+            >
+              Architect Luminita Campian
+            </p>
+          </div>
         </div>
       </div>
     </section>

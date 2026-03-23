@@ -45,10 +45,9 @@ export default function Pricing() {
             {plans.map((p) => (
               <div
                 key={p.duration}
-                className={`reveal ${
+                className={`reveal card-pad-xl ${
                   p.featured ? "bg-cobalt" : "bg-cobalt-light"
                 }`}
-                style={{ padding: "4rem" }}
               >
                 <div
                   className="font-body text-[0.7rem] tracking-[3px] uppercase"
@@ -60,7 +59,7 @@ export default function Pricing() {
                   {p.duration}
                 </div>
                 <div
-                  className="font-display text-[4.5rem] font-light leading-none"
+                  className="font-display text-[4.5rem] font-light leading-none pricing-price"
                   style={{
                     marginBottom: "1.2rem",
                     color: p.featured ? "#F5F2EE" : "#1A1410",

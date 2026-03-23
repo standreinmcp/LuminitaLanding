@@ -67,7 +67,7 @@ export default function About() {
           </div>
 
           <div
-            className="reveal flex items-end gap-12"
+            className="reveal flex items-end gap-12 credentials-row"
             style={{ marginTop: "3rem" }}
           >
             {credentials.map((c) => (

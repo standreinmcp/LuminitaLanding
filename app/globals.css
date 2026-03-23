@@ -66,7 +66,8 @@ h1, h2, h3 {
 .section-padding-footer { padding: 4rem; }
 .nav-padding { padding: 1.5rem 4rem; }
 .hero-left-pad { padding: 8rem 4rem 6rem; }
-.hero-right-content-pos { bottom: 6rem; left: 4rem; right: 4rem; }
+.hero-quote { font-size: 1.8rem; }
+.hero-right-quote-pad { padding: 2rem 4rem 6rem; }
 .bridge-text-pad { padding-left: 4rem; }
 
 /* Two-column grid layouts */
@@ -191,6 +192,10 @@ h1, h2, h3 {
   border-right: none;
 }
 
+/* Card padding utilities — responsive via media query below */
+.card-pad-lg { padding: 3.5rem; }
+.card-pad-xl { padding: 4rem; }
+
 /* Responsive — matches HTML's 900px breakpoint */
 @media (max-width: 900px) {
   .nav-padding { padding: 1.5rem 2rem; }
@@ -210,7 +215,7 @@ h1, h2, h3 {
   }
   .bordered-grid-3 > *:not(:first-child) { padding-left: 0; }
 
-  .bordered-grid-5-light { grid-template-columns: 1fr 1fr; }
+  .bordered-grid-5-light { grid-template-columns: 1fr; }
   .bordered-grid-5-light > * {
     border-right: none;
     border-bottom: 1px solid rgba(245,242,238,0.15);
@@ -226,7 +231,9 @@ h1, h2, h3 {
   .bordered-grid-2 > *:nth-child(even) { padding-left: 0; }
 
   .hero-grid { grid-template-columns: 1fr; }
-  .hero-right-col { min-height: 300px; }
+  .hero-right-col { min-height: 360px; }
+  .hero-right-quote-pad { padding: 2rem; }
+  .hero-quote { font-size: 1.4rem; }
   .grid-3col { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .footer-grid > *:nth-child(2) { justify-self: start; text-align: left; }
@@ -234,4 +241,11 @@ h1, h2, h3 {
   .footer-grid > *:nth-child(3) { justify-self: start; text-align: left; }
   .footer-grid > *:nth-child(3) .footer-legal-list { align-items: flex-start; }
   .pricing-cards-grid { grid-template-columns: 1fr; }
+
+  .card-pad-lg { padding: 2rem; }
+  .card-pad-xl { padding: 2rem; }
+
+  .credentials-row { gap: 2rem; flex-wrap: wrap; }
+
+  .pricing-price { font-size: clamp(3rem, 10vw, 4.5rem); }
 }

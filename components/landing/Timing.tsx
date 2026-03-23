@@ -38,10 +38,9 @@ export default function Timing() {
         {timings.map((t) => (
           <div
             key={t.stage}
-            className={`reveal ${
+            className={`reveal card-pad-lg ${
               t.featured ? "bg-cobalt" : "bg-cobalt-light"
             }`}
-            style={{ padding: "3.5rem" }}
           >
             <div
               className="font-body text-[0.7rem] tracking-[4px] uppercase"

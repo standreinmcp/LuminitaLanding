@@ -32,9 +32,8 @@ export default function Testimonials() {
         {testimonials.map((t) => (
           <div
             key={t.attr}
-            className="reveal transition-colors duration-300 hover:bg-paper/[0.06]"
+            className="reveal card-pad-lg transition-colors duration-300 hover:bg-paper/[0.06]"
             style={{
-              padding: "3.5rem",
               background: "rgba(245,242,238,0.03)",
               borderTop: "1px solid rgba(245,242,238,0.08)",
             }}

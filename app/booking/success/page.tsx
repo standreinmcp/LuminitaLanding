@@ -5,6 +5,7 @@ import { getSessionType } from "@/lib/config";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import ScheduleCallCTA from "@/components/booking/ScheduleCallCTA";
+import PurchaseTracker from "@/components/booking/PurchaseTracker";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -44,8 +45,15 @@ export default async function BookingSuccessPage({ searchParams }: Props) {
   const customerName = session.metadata?.customerName || "there";
   const firstName = customerName.split(" ")[0];
 
+  const purchaseValue = sessionTypeId === "90min" ? 220 : 160;
+
   return (
     <>
+      <PurchaseTracker
+        transactionId={session_id}
+        sessionType={sessionTypeId}
+        value={purchaseValue}
+      />
       <Navbar hideCta />
 
       <main

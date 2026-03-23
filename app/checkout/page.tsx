@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
+import { trackBeginCheckout } from "@/lib/analytics";
 
 const sessions = [
   { id: "60min", duration: "60 Minutes", price: "€160", desc: "Focused advisory session" },
@@ -40,6 +41,9 @@ function CheckoutContent() {
 
     setIsLoading(true);
     setError(null);
+
+    const priceValue = selected === "90min" ? 220 : 160;
+    trackBeginCheckout(selected, priceValue);
 
     try {
       const res = await fetch("/api/stripe/create-checkout-session", {

@@ -27,15 +27,15 @@ export default function Navbar({ hideCta = false }: { hideCta?: boolean }) {
       >
         Interior Design Advisory
       </span>
-      {!hideCta && (
-        <Link
-          href="/checkout"
-          className="font-body text-[0.8rem] tracking-[2px] uppercase text-paper bg-cobalt no-underline transition-colors duration-300 hover:bg-brick"
-          style={{ padding: "0.7rem 1.8rem" }}
-        >
-          Book a Session
-        </Link>
-      )}
+      <Link
+        href="/checkout"
+        className={`font-body text-[0.8rem] tracking-[2px] uppercase text-paper bg-cobalt no-underline transition-colors duration-300 hover:bg-brick ${hideCta ? "invisible" : ""}`}
+        style={{ padding: "0.7rem 1.8rem" }}
+        tabIndex={hideCta ? -1 : undefined}
+        aria-hidden={hideCta || undefined}
+      >
+        Book a Session
+      </Link>
     </nav>
   );
 }

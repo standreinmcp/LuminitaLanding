@@ -1,5 +1,7 @@
 "use client";
 
+import { trackScheduleCall } from "@/lib/analytics";
+
 const CALENDAR_LINKS: Record<string, string | undefined> = {
   "60min": process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LINK_60MIN,
   "90min": process.env.NEXT_PUBLIC_GOOGLE_CALENDAR_LINK_90MIN,
@@ -19,6 +21,7 @@ export default function ScheduleCallCTA({ sessionType }: Props) {
       href={calendarLink}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackScheduleCall(sessionType)}
       className="group inline-flex items-center font-body text-white no-underline cursor-pointer"
       style={{
         fontSize: "0.72rem",

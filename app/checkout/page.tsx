@@ -24,7 +24,50 @@ function CheckoutContent() {
   const initialSession = searchParams.get("session") === "90min" ? "90min" : "60min";
   const [selected, setSelected] = useState(initialSession);
   const [newsletter, setNewsletter] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const activeSession = sessions.find((s) => s.id === selected)!;
+
+  async function handleCheckout() {
+    if (!firstName.trim() || !lastName.trim() || !email.trim()) {
+      setError("Please fill in all required fields.");
+      return;
+    }
+
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const res = await fetch("/api/stripe/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionType: selected,
+          customerEmail: email.trim(),
+          customerName: `${firstName.trim()} ${lastName.trim()}`,
+          phone: phone.trim() || undefined,
+          newsletter,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.url) {
+        setError(data.error || "Something went wrong. Please try again.");
+        setIsLoading(false);
+        return;
+      }
+
+      window.location.href = data.url;
+    } catch {
+      setError("Network error. Please check your connection and try again.");
+      setIsLoading(false);
+    }
+  }
 
   return (
     <>
@@ -227,6 +270,8 @@ function CheckoutContent() {
                     name="firstName"
                     required
                     placeholder="Alex"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                     className="font-body text-dark outline-none transition-all duration-200"
                     style={{
                       width: "100%",
@@ -256,6 +301,8 @@ function CheckoutContent() {
                     name="lastName"
                     required
                     placeholder="Martin"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
                     className="font-body text-dark outline-none transition-all duration-200"
                     style={{
                       width: "100%",
@@ -289,6 +336,8 @@ function CheckoutContent() {
                   type="email"
                   required
                   placeholder="you@example.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="font-body text-dark outline-none transition-all duration-200"
                   style={{
                     width: "100%",
@@ -331,6 +380,8 @@ function CheckoutContent() {
                   name="phone"
                   type="tel"
                   placeholder="+351 926 574 920"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   className="font-body text-dark outline-none transition-all duration-200"
                   style={{
                     width: "100%",
@@ -398,10 +449,28 @@ function CheckoutContent() {
                   </span>
                 </button>
 
+                {/* Error message */}
+                {error && (
+                  <div
+                    className="font-body text-brick"
+                    style={{
+                      fontSize: "0.85rem",
+                      marginBottom: "1.5rem",
+                      padding: "0.75rem 1rem",
+                      backgroundColor: "#F5E8E6",
+                      borderRadius: "8px",
+                    }}
+                  >
+                    {error}
+                  </div>
+                )}
+
                 {/* CTA */}
                 <button
                   type="button"
-                  className="font-body bg-brick text-paper hover:bg-dark transition-colors duration-300 cursor-pointer"
+                  onClick={handleCheckout}
+                  disabled={isLoading}
+                  className="font-body bg-brick text-paper hover:bg-dark transition-colors duration-300 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                   style={{
                     width: "100%",
                     fontSize: "0.78rem",
@@ -412,7 +481,9 @@ function CheckoutContent() {
                     border: "none",
                   }}
                 >
-                  Continue to payment — {activeSession.price}
+                  {isLoading
+                    ? "Redirecting to Stripe…"
+                    : `Continue to payment — ${activeSession.price}`}
                 </button>
 
                 {/* Trust line */}

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { stripe } from "@/lib/stripe";
 import { getSessionType } from "@/lib/config";
@@ -5,6 +6,16 @@ import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
 import ScheduleCallCTA from "@/components/booking/ScheduleCallCTA";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Booking Confirmed",
+  description:
+    "Your interior design advisory session with Luminita Campian has been booked. Schedule your call and prepare for your session.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 interface Props {
   searchParams: Promise<{ session_id?: string }>;

@@ -1,9 +1,21 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { stripe } from "@/lib/stripe";
 import { getSessionType } from "@/lib/config";
 import Navbar from "@/components/landing/Navbar";
 import Footer from "@/components/landing/Footer";
+import ScheduleCallCTA from "@/components/booking/ScheduleCallCTA";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Booking Confirmed",
+  description:
+    "Your interior design advisory session with Luminita Campian has been booked. Schedule your call and prepare for your session.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 interface Props {
   searchParams: Promise<{ session_id?: string }>;
@@ -201,7 +213,7 @@ export default async function BookingSuccessPage({ searchParams }: Props) {
                 </div>
               </div>
 
-              {/* Phase 4 placeholder: Google Calendar scheduling */}
+              {/* Schedule your call */}
               <div
                 style={{
                   marginBottom: "2.5rem",
@@ -228,12 +240,11 @@ export default async function BookingSuccessPage({ searchParams }: Props) {
                     maxWidth: "32rem",
                   }}
                 >
-                  You&apos;ll receive a confirmation email shortly. Luminita will
-                  reach out within 24 hours to schedule your session at a time
-                  that works for you.
+                  Pick a time that works for you and Luminita will be ready with
+                  personalised advice for your space.
                 </p>
 
-                {/* Phase 4: ScheduleCallCTA will be inserted here */}
+                <ScheduleCallCTA sessionType={sessionTypeId} />
               </div>
 
               {/* Preparation tips */}
@@ -283,8 +294,6 @@ export default async function BookingSuccessPage({ searchParams }: Props) {
                   </li>
                 </ol>
               </div>
-
-              {/* Phase 3 placeholder: Newsletter opt-in will go here */}
 
               {/* Back to home */}
               <div className="text-center" style={{ paddingTop: "0.5rem" }}>

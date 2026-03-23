@@ -23,10 +23,10 @@ export default function Problem() {
   return (
     <section className="bg-cobalt-light section-padding">
       <div className="section-label reveal">What goes wrong</div>
-      <p className="reveal font-display text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.2] max-w-[800px] text-dark" style={{ marginBottom: "6rem" }}>
+      <h2 className="reveal font-display text-[clamp(2rem,4vw,3.5rem)] font-light leading-[1.2] max-w-[800px] text-dark" style={{ marginBottom: "6rem" }}>
         Here&apos;s what happens when you make design decisions without the
         right guidance.
-      </p>
+      </h2>
       <div className="bordered-grid-3">
         {problems.map((p) => (
           <div key={p.num} className="reveal">

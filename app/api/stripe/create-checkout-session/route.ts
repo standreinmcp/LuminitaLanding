@@ -5,7 +5,7 @@ import { getSessionType } from "@/lib/config";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { sessionType, customerEmail, customerName } = body;
+    const { sessionType, customerEmail, customerName, newsletter } = body;
 
     const session = getSessionType(sessionType);
     if (!session) {
@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
       metadata: {
         sessionType: session.id,
         customerName: customerName || "",
+        newsletterOptIn: newsletter ? "true" : "false",
       },
       success_url: `${baseUrl}/booking/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${baseUrl}/#pricing`,

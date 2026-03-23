@@ -13,7 +13,7 @@ export default function Footer() {
           Private Interior Design Advisory
         </p>
         <p className="text-[0.8rem] text-paper/25 tracking-[1px] leading-[1.6]">
-          &copy; 2025 — All rights reserved
+          &copy; 2026 — All rights reserved
         </p>
         <div className="flex flex-row items-center gap-4 mt-6">
           <a

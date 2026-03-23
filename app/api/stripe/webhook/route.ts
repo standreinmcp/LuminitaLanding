@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
+import { addSubscriber } from "@/lib/mailerlite";
 import Stripe from "stripe";
 
 export async function POST(req: NextRequest) {
@@ -43,6 +44,21 @@ export async function POST(req: NextRequest) {
         sessionType: session.metadata?.sessionType,
         amountTotal: session.amount_total,
       });
+
+      if (
+        session.metadata?.newsletterOptIn === "true" &&
+        session.customer_email
+      ) {
+        try {
+          await addSubscriber({
+            email: session.customer_email,
+            name: session.metadata.customerName || "",
+          });
+          console.log("Newsletter subscriber added:", session.customer_email);
+        } catch (err) {
+          console.error("Failed to add newsletter subscriber:", err);
+        }
+      }
       break;
     }
     default:
